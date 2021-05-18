@@ -13,22 +13,20 @@ namespace Uppgift9
             var isValid = false;
             if (long.TryParse(idNumberUserInput, out long input))
             {
-                isValid = id.CheckNumber(input);
+                isValid = id.CheckIfValid(input);
+                if (isValid)
+                {
+                    Console.WriteLine("Yeah, that's a real personnummer");
+                }
+                else
+                {
+                    Console.WriteLine("Nope, not a valid personnummer");
+                }
             }
             else
             {
                 Console.WriteLine("Invalid input.");
             }
-
-            if (isValid)
-            {
-                Console.WriteLine("Yeah, that's a real personnummer");
-            }
-            else
-            {
-                Console.WriteLine("Nope, not a valid personnummer");
-            }
-
         }
     }
 }
