@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace Uppgift9
 {
-    public class SwedishID
+    public class SwedishID : IdNumber
     {
         public SwedishID()
         {
 
         }
-        public bool CheckNumber(long number)
+        public bool CheckIfValid(long number)
         {
             List<int> numbers = number.SelectEachNumber().ToList();
             if (numbers.Count() == 12)
@@ -25,14 +25,7 @@ namespace Uppgift9
             long product;
             for (int i = 0; i < numbers.Count() - 1; i++)
             {
-                if (Math.Pow(-1, i) == 1)
-                {
-                    product = 2 * numbers[i];
-                }
-                else
-                {
-                    product = numbers[i];
-                }
+                product = (Math.Pow(-1, i) == 1) ? 2 * numbers[i] : numbers[i];
                 foreach (var num in product.SelectEachNumber())
                 {
                     LuhnProducts.Add(num);
